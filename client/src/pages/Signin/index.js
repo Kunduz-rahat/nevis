@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import Layout from "../../components/Layout";
 import axios from "axios";
+import {Redirect, useHistory} from "react-router-dom";
+
 import {toast, ToastContainer} from "react-toastify";
+import {authentication, isAuth} from "../../lib/authentication";
+
 
 const Signin = () => {
+  const history = useHistory()
   const [values, setValues] = useState({
     email: "",
     password: ""
@@ -19,16 +24,20 @@ const Signin = () => {
       data: values
     }).then(({data}) => {
       if (values.email) {
-        const name = (JSON.stringify(data.user.name))
-        toast(`Добро пожаловать, ${name}`)
+        authentication(data)
+        isAuth() && isAuth().role === "admin" ? history.push('/admin') : history.push('/private')
+        const name = ((data.user.name))
+        toast.success(`Добро пожаловать, ${name}`)
         setValues({password: "", email: ""})
       }
     })
-      .catch((e) => toast(JSON.stringify(e.response.data.message)))
+      .catch((e) => toast.error((e.response.data.message)))
     setValues({password: "", email: ""})
   }
   return (
     <Layout>
+
+      {isAuth() ? <Redirect to='/'/> : null}
       <ToastContainer/>
       <div className="flex items-center justify-center">
         <div className="w-full max-w-md">
@@ -85,6 +94,8 @@ const Signin = () => {
 
         </div>
       </div>
+
+
     </Layout>
   );
 };

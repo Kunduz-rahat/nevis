@@ -3,7 +3,11 @@ import Layout from "../../components/Layout";
 import {ToastContainer, toast} from "react-toastify";
 import axios from "axios";
 
+import {Redirect} from "react-router-dom";
+import {isAuth} from "../../lib/authentication";
+
 const Signup = () => {
+
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -19,6 +23,7 @@ const Signup = () => {
       url: 'http://localhost:8000/api/v1/signup',
       data: values
     } ).then(({data})=>{
+
       toast(JSON.stringify(data.message))
       setValues({name:"", password:"", email:""})
     })
@@ -26,6 +31,7 @@ const Signup = () => {
   }
   return (
     <Layout>
+      {isAuth() ? <Redirect to='/'/> : null}
       <ToastContainer/>
       <div className="flex items-center justify-center">
         <div className="w-full max-w-md">

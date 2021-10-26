@@ -6,6 +6,8 @@ import Admin from "../../pages/Admin";
 import Signup from "../../pages/Signup";
 import Signin from "../../pages/Signin";
 import App from "../../App";
+import PrivateRoute from "../PrivateRoute";
+import AdminRoute from "../AdminRoute";
 
 
 
@@ -14,8 +16,8 @@ const Routes = () => {
     <Router>
     <Switch>
       <Route exact path="/" component={App}/>
-      <Route exact path="/private" component={Private}/>
-      <Route exact path="/admin" component={Admin}/>
+      <PrivateRoute exact path="/private" component={Private}/>
+      <AdminRoute exact path="/admin" component={Admin}/>
       <Route exact path="/signup" component={Signup}/>
       <Route exact path="/signin" component={Signin}/>
     </Switch>
