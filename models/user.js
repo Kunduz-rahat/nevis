@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
   role :{
     type:String,
     default:"user"
-  }
+  },
+  news:[{
+    type:mongoose.Schema.Types.ObjectId, ref:"news"
+  }]
 
 }, {timestamps:true})
 userSchema.pre("save", async function (next){ /// мидлвейр через себя пропускает пользователя

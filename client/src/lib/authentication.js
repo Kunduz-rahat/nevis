@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import axios from "axios";
 
 export const authentication = (data)=>{
   Cookies.set("token", data.token, {expires: 1})
@@ -21,5 +22,15 @@ export const clearUser =()=>{
    Cookies.remove("token")
   localStorage.removeItem("user")
 
+}
+
+
+export const starUp =()=>{
+  const token = Cookies.get('token')
+  axios.post('http://localhost:8000/api/v1/authentication', {token})
+    .then(({data}) => console.log(data))
+    .catch(()=>{
+      clearUser()
+    })
 }
 

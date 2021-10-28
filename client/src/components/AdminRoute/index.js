@@ -16,7 +16,7 @@ function AdminRoute({ component: Component, ...rest }) {
             ) : (
               <Redirect
                 to={{
-                  pathname: '/admin',
+                  pathname: '/',
                   state: { from: location }
                 }}
               />

@@ -1,7 +1,6 @@
 {
-  "name": "auth-ev",
+  "name": "cls",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -25,5 +24,14 @@
     "start": "node server"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kunduz-rahat/nevis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kunduz-rahat/nevis/issues"
+  },
+  "homepage": "https://github.com/Kunduz-rahat/nevis#readme",
+  "description": ""
 }

@@ -4,6 +4,7 @@ const mongoose = require('mongoose') /// взаимодействует с на�
 const chalk = require('chalk')
 require('dotenv').config()
 const authRouter = require("./routers/auth")
+const createRouter = require("./routers/news")
 
 
 const server = express()
@@ -16,6 +17,7 @@ server.use(cors())
 server.use(express.json())
 
 server.use('/api/v1', authRouter)
+server.use('/api/v1/news', createRouter)
 const port = 8000
 server.listen(process.env.PORT || port, () => {
   console.log(chalk.green("server in started"))
