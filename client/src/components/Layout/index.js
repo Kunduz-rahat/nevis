@@ -5,9 +5,9 @@ const Layout = ({children}) => {
   return (
     <div>
       <Header/>
-   <div className='container sm mx-auto my-6 p-5'>
-     {children}
-   </div>
+      <div className='container mx-auto p-5 flex-col md:flex-row items-center'>
+        {children}
+      </div>
     </div>
   );
 };

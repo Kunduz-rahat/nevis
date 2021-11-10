@@ -1,10 +1,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 
-export const authentication = (data)=>{
-  Cookies.set("token", data.token, {expires: 1})
-  localStorage.setItem("user", JSON.stringify(data.user))
-}
+
 
 
 export const isAuth = () => {

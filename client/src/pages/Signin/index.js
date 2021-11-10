@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import Layout from "../../components/Layout";
-import axios from "axios";
-import {Redirect, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import {toast, ToastContainer} from "react-toastify";
-import {authentication, isAuth} from "../../lib/authentication";
+import {signIn} from "../../redux/actions/userActions";
 
 
 const Signin = () => {
+  const dispatch = useDispatch()
   const history = useHistory()
   const [values, setValues] = useState({
     email: "",
@@ -18,26 +19,13 @@ const Signin = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios({
-      method: "POST",
-      url: 'http://localhost:8000/api/v1/signin',
-      data: values
-    }).then(({data}) => {
-      if (values.email) {
-        authentication(data)
-        isAuth() && isAuth().role === "admin" ? history.push('/admin') : history.push('/private')
-        const name = ((data.user.name))
-        toast.success(`Добро пожаловать, ${name}`)
-        setValues({password: "", email: ""})
-      }
-    })
-      .catch((e) => toast.error((e.response.data.message)))
-    setValues({password: "", email: ""})
+    dispatch(signIn(values))
+
   }
   return (
     <Layout>
 
-      {isAuth() ? <Redirect to='/'/> : null}
+
       <ToastContainer/>
       <div className="flex items-center justify-center">
         <div className="w-full max-w-md">

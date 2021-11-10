@@ -11,6 +11,7 @@ import {starUp} from "../../lib/authentication";
 import Blog from "../../pages/Blog";
 import CreatePost from "../../pages/CreatePost";
 import UserInfo from "../../pages/UserInfo";
+import PostInfo from "../../pages/PostInfo";
 
 
 const Routes = () => {
@@ -24,9 +25,10 @@ const Routes = () => {
         <Route exact path="/" component={App}/>
         <Route exact path="/create-post" component={CreatePost}/>
         <Route exact path="/user/:id" component={UserInfo}/>
+        <Route exact path="/news/:id" component={PostInfo}/>
         <Route exact path="/signup" component={Signup}/>
         <Route exact path="/signin" component={Signin}/>
-        <PrivateRoute exact path="/blog" component={Blog}/>
+        <PrivateRoute exact path="/news" component={Blog}/>
         <PrivateRoute exact path="/private" component={Private}/>
         <AdminRoute exact path="/admin" component={Admin}/>
       </Switch>

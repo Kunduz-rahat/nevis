@@ -12,8 +12,13 @@ const newsSchema = new mongoose.Schema({
 
   },
   user:{
-    type:mongoose.Schema.Types.ObjectId, ref:"users"
-  }
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"users"
+  },
+  comments:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"comments"
+  }]
 }, {timestamps: true})
 
 module.exports = mongoose.model('news', newsSchema)

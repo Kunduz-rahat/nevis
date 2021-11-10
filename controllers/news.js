@@ -10,6 +10,7 @@ const getAllNews = async (req, res)=>{
   }
 }
 
+
 const createPost =  async (req, res)=>{
   try {
     const newPost = new News(req.body)
@@ -21,5 +22,18 @@ const createPost =  async (req, res)=>{
   }
 }
 
+const getNewsInfo = async (req, res)=>{
+  try{
+    const newsInfo = await News.findById(req.params.id).populate('comments').populate({
+      path:'comments',
+      populate:"user"
+    })
+    res.json(newsInfo)
+  }catch (e) {
+    return res.status(401).json({message: "Не удалось получить новость"})
+  }
+}
 
-module.exports={createPost, getAllNews}
+
+
+module.exports={createPost, getAllNews,getNewsInfo}

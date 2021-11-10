@@ -26,7 +26,7 @@ const CreatePost = () => {
       }).then(({data})=>{
         toast.success("Пост успешно записан")
         setValues({title:"", description:""})
-        history.push('/blog')
+        history.push('/news')
 
       }).catch((error) =>{
         toast.error(error)

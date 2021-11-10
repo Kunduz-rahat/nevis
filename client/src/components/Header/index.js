@@ -17,14 +17,14 @@ const Header = () => {
               className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
           <img src="https://pazly.dev/logo.png" alt="logo" width={50}/>
 
-          <span className="ml-3 text-xl">Nevis</span>
+          <span className="text-xl">Nevis</span>
         </Link>
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
           <Link to='/'
                 className="mr-5  cursor-pointer border-b border-transparent hover:border-indigo-600">Home</Link>
           <Link to='/private'
                 className="mr-5  cursor-pointer border-b border-transparent hover:border-indigo-600">Private</Link>
-          <Link to='/blog'
+          <Link to='/news'
                 className="mr-5  cursor-pointer border-b border-transparent hover:border-indigo-600">Blog</Link>
           {isAuth()?.role==="admin" &&
             <Link to='/admin' className="mr-5  cursor-pointer border-b border-transparent hover:border-indigo-600">
